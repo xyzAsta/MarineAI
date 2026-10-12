@@ -1,0 +1,127 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.public-site {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+.public-site,
+.public-site *,
+.public-site *::before,
+.public-site *::after {
+  box-sizing: border-box;
+}
+
+.public-site :where(h1, h2, h3, h4, h5, h6, p) {
+  margin: 0;
+}
+
+.public-site button,
+.public-site input,
+.public-site select,
+.public-site textarea {
+  font: inherit;
+}
+
+.public-site a:not(.underline) {
+  text-decoration: none;
+}
+
+.public-site img,
+.public-site svg,
+.public-site video {
+  display: block;
+  vertical-align: middle;
+}
+
+.public-site img,
+.public-site video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Waves ---------- */
+@keyframes public-wave-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes public-tide {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 14px; }
+}
+.public-site .wave-slide { animation: public-wave-slide 22s linear infinite; }
+.public-site .wave-tide { animation: public-tide 7s ease-in-out infinite; }
+
+/* ---------- Underwater scene ---------- */
+@keyframes public-kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+.public-site .animate-kenburns { animation: public-kenburns 30s ease-in-out infinite alternate; }
+
+@keyframes public-caustics {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to { transform: translate3d(3%, 3%, 0) scale(1.15); }
+}
+.public-site .caustics {
+  background:
+    radial-gradient(40% 30% at 20% 30%, rgba(125, 211, 252, 0.35), transparent 70%),
+    radial-gradient(35% 28% at 75% 20%, rgba(94, 234, 212, 0.3), transparent 70%),
+    radial-gradient(45% 35% at 60% 75%, rgba(56, 189, 248, 0.25), transparent 70%);
+  animation: public-caustics 16s ease-in-out infinite alternate;
+}
+
+@keyframes public-ray-sway {
+  0%, 100% { transform: translateX(-30px) skewX(-14deg); opacity: 0.45; }
+  50% { transform: translateX(40px) skewX(-8deg); opacity: 0.9; }
+}
+.public-site .ray { animation: public-ray-sway 20s ease-in-out infinite; }
+
+@keyframes public-bubble-rise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.7; }
+  50% { transform: translateY(-55vh) translateX(18px); }
+  100% { transform: translateY(-110vh) translateX(-12px); opacity: 0; }
+}
+.public-site .bubble { animation: public-bubble-rise 16s ease-in infinite; }
+
+/* ---------- Detection card ---------- */
+@keyframes public-scan {
+  0% { top: -25%; }
+  100% { top: 100%; }
+}
+.public-site .scan-line { animation: public-scan 3.5s linear infinite; }
+
+@keyframes public-box-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.03); }
+}
+.public-site .box-pulse { animation: public-box-pulse 2.4s ease-in-out infinite; }
+
+@keyframes public-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.public-site .animate-float { animation: public-float 6s ease-in-out infinite; }
+
+/* ---------- Logo ---------- */
+@keyframes public-logo-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(1.4px); }
+}
+.public-site .logo-wave { animation: public-logo-bob 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .public-site .wave-slide, .public-site .wave-tide, .public-site .animate-kenburns, .public-site .caustics, .public-site .ray,
+  .public-site .bubble, .public-site .scan-line, .public-site .box-pulse, .public-site .animate-float, .public-site .logo-wave {
+    animation: none;
+  }
+}
