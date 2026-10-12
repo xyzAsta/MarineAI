@@ -502,13 +502,16 @@ function AppInner() {
           <>
             <Drawer variant="permanent" className="sidebar">
               <Box className="brand-box">
-                <Box className="brand-mark">M</Box>
-                <Box>
+                <Box className="brand-mark">
+                  <Box component="img" src="/images/svg.png" alt="Marine AI logo" />
+                </Box>
+                <Box className="brand-copy">
                   <Typography variant="h6" className="brand-title">
-                    Marine AI
+                    Marine
+                    <Box component="span" className="brand-title-accent">AI</Box>
                   </Typography>
                   <Typography variant="caption" className="brand-subtitle">
-                    Pollution intelligence
+                    Ocean Intel
                   </Typography>
                 </Box>
               </Box>
